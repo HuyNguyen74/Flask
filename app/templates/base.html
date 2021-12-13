@@ -1,0 +1,115 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{title}} -First App</title>
+        {% else %}
+        <title>Home page</title>
+        {% endif %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+        <style>
+          .content {
+            margin-top: 60px;
+          }
+    
+          .inline-pad {
+            padding-left: 10px;
+          }
+    
+          .edit-controls {
+            margin: 1em 0;
+          }
+          * {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for('Book_list') }}">My Book</a>
+              </div>
+              {% if current_user.is_anonymous %}
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+              </ul>
+              {% else %}
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/upload">Add Book</a></li>
+                <li>
+                  <form class="navbar-form navbar-left" action="{{ url_for('book_search') }}">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Search" name="search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                  </form>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">{{ current_user.email }}</a></li>
+              <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+              {% endif %}
+              
+              
+            </div>
+          </nav>
+       
+        <br>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            
+            <ul>
+
+                {% for message in messages %}
+                
+                <li> {{message}}</li>
+                {% endfor %}
+            </ul>
+            {%  endif %}
+            {% endwith %}
+           
+            <div class="content container">
+        {% block content %}
+        {% endblock %}
+            </div>
+        
+    </body>
+</html>

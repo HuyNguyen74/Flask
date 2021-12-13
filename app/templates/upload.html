@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Add Book{% endblock title %}
+{% block content %}
+<div class="row">
+  <div class="appointment-edit well offset2 span8">
+    <form action = "" method="post"  enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        
+        {{ form.bookname.label }}<br>
+        {{ form.bookname(size=28) }}<br>
+        {{ form.author.label }}<br>
+        {{ form.author(size=28) }}<br>
+        {{ form.price.label }}<br>
+        {{ form.price(size=28) }}<br>
+        {{ form.img.label }}<br>
+        {{ form.img(size=28) }}<br>
+        <input type="file" name="file"><br>
+        {{ form.submit() }}
+        <div>
+          or <a href="{{ url_for('Book_list') }}">Cancel</a>
+        </div>
+      </form>
+  </div>
+</div>
+{% endblock %}

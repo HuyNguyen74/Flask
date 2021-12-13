@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Detail Book{% endblock title %}
+{% block content %}
+<table  class="table table-hover">
+    <tr>
+        
+        <td>
+          <img src="/static/{{ appt.img}}" title="Ảnh"style="width: 120px;height: 130px;"> <br>
+          {{ appt.bookname}}<br>
+          <span class="glyphicon glyphicon-user"></span> {{appt.author}}<br>
+          <span class="glyphicon glyphicon-usd"></span> {{appt.price}}<br>
+
+        </td>
+        <td>
+            <a href="{{ url_for('book_edit', book_id=appt.id) }}" >
+                <span class="glyphicon glyphicon-wrench"></span> Edit
+              </a>
+            
+              </a><br><br>
+              <a href="{{ url_for('book_delete', book_id=appt.id) }}">
+                <span class="glyphicon glyphicon-trash"></span>
+                Delete
+              </a>
+        </td>
+      
+    </tr>  
+  
+  
+</table>
+{% endblock %}

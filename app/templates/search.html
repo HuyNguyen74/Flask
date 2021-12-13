@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table  class="table table-hover">
+    {% if appts %}
+      <th>Book List</th>
+    {%endif%}
+  {% for appt in appts %}
+    <tr>
+        
+        <td>
+          <img src="/static/{{ appt.img}}" title="Ảnh"style="width: 120px;height: 130px;"> <br>
+         <a href="{{ url_for('book_detail',book_id=appt.id) }}"> {{ appt.bookname}}</a><br>
+          <span class="glyphicon glyphicon-user"></span> {{appt.author}}<br>
+          <span class="glyphicon glyphicon-usd"></span> {{appt.price}}<br>
+
+        </td>
+      
+    </tr>  
+    
+    {% else %}
+    <h3 class="span12">Book Management.</h3>
+  
+  {% endfor %}
+  
+</table>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Register </h1>
+<div class="row">
+    <div class="appointment-edit well offset2 span8">
+<form action="" method="post" novalidate class="form-horizontal">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.email.label }} <br>
+        {{ form.email(size=28)}}
+    </p>
+    <p>
+        {{ form.username.label }} <br>
+        {{ form.username(size=28)}}
+    </p>
+    <p>
+        {{ form.password.label }} <br>
+        {{ form.password(size=28)}}
+    </p>
+    <p>
+        {{ form.confirm.label }} <br>
+        {{ form.confirm(size=28)}}
+    </p>
+    <p>
+        {{ form.submit()}}
+    </p>
+</form>
+    </div>
+</div>
+{% endblock %}
