@@ -97,7 +97,7 @@ def upload():
         upload_file=request.files['file']
         if upload_file.filename!='':
             upload_file.save(os.path.join(app.config['UPLOAD_FOLDER'],upload_file.filename))
-          #  bk=Book(bookname=form.bookname.data,author=form.author.data,price=int(form.price.data),img=upload_file.filename)
+           # bk=Book(bookname=form.bookname.data,author=form.author.data,price=int(form.price.data),img=upload_file.filename)
         db.session.add(bk)
         db.session.commit()
     
@@ -148,7 +148,7 @@ def book_edit(book_id):
         upload_file=request.files['file']
         if upload_file.filename!='':
             upload_file.save(os.path.join(app.config['UPLOAD_FOLDER'],upload_file.filename))
-        appt.img =  upload_file.filename
+            appt.img =  upload_file.filename
    
         db.session.add(appt)
         db.session.commit()
