@@ -162,7 +162,7 @@ def book_delete(book_id):
   
     appt = db.session.query(Book).get(book_id)
     if appt is None:
-        flash('Appointment not found')
+        flash('Book not found')
         return redirect('/index')
     db.session.delete(appt)
     db.session.commit()
